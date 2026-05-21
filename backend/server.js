@@ -28,7 +28,7 @@ app.use('/api/auth', require('./routes/auth'));
 app.use('/api/schedule', require('./routes/schedule'));
 app.use('/api/quiz', require('./routes/quiz'));
 
-app.get('/', (req, res) => res.json({ message: 'CS Fundamentals API running' }));
+app.get('/', (req, res) => res.json({ message: 'Goal2Hire API running' }));
 
 // Connect DB and start server
 mongoose.connect(process.env.MONGO_URI)

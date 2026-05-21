@@ -25,6 +25,33 @@ const userSchema = new mongoose.Schema({
   cycle: {
     type: Number,
     default: 1 // which cycle (1 or 2)
+  },
+  selectedSubject: {
+    type: String,
+    default: null
+  },
+  agreed: {
+    type: Boolean,
+    default: false
+  },
+  agreementDate: {
+    type: Date
+  },
+  currentDay: {
+    type: Number,
+    default: 1
+  },
+  dayDeadline: {
+    type: Date
+  },
+  failedDays: {
+    type: [Number],
+    default: []
+  },
+  quizScores: {
+    type: Map,
+    of: Number,
+    default: {}
   }
 }, { timestamps: true });
 

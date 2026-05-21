@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
+const { syncUserStatus, formatUser } = require('../utils/syncUser');
 
 const signToken = (id) =>
   jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '7d' });
@@ -22,12 +23,7 @@ router.post('/register', async (req, res) => {
 
     res.status(201).json({
       token,
-      user: {
-        id: user._id,
-        username: user.username,
-        startDate: user.startDate,
-        completedDays: user.completedDays
-      }
+      user: formatUser(user)
     });
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -45,15 +41,11 @@ router.post('/login', async (req, res) => {
     if (!user || !(await user.comparePassword(password)))
       return res.status(401).json({ message: 'Invalid credentials' });
 
+    await syncUserStatus(user);
     const token = signToken(user._id);
     res.json({
       token,
-      user: {
-        id: user._id,
-        username: user.username,
-        startDate: user.startDate,
-        completedDays: user.completedDays
-      }
+      user: formatUser(user)
     });
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -62,14 +54,14 @@ router.post('/login', async (req, res) => {
 
 // Get current user (protected)
 router.get('/me', require('../middleware/auth'), async (req, res) => {
-  res.json({
-    user: {
-      id: req.user._id,
-      username: req.user.username,
-      startDate: req.user.startDate,
-      completedDays: req.user.completedDays
-    }
-  });
+  try {
+    await syncUserStatus(req.user);
+    res.json({
+      user: formatUser(req.user)
+    });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 });
 
 module.exports = router;

@@ -1,0 +1,677 @@
+[
+  {
+    "day": 1,
+    "topic": "Computer System Overview + Von Neumann Architecture & CPU",
+    "subtopics": [
+      "Computer system overview",
+      "Von Neumann architecture",
+      "CPU components: ALU, CU, Registers"
+    ],
+    "category": "Computer Organization & Architecture",
+    "resources": [
+      "https://www.youtube.com/watch?v=zltgXvg6r3k",
+      "https://www.geeksforgeeks.org/computer-organization-von-neumann-architecture/",
+      "https://cs.stanford.edu/people/eroberts/courses/soco/projects/risc/vnarchitecture/"
+    ]
+  },
+  {
+    "day": 2,
+    "topic": "Instruction Cycle & Clock Speed / Performance",
+    "subtopics": [
+      "Fetch-decode-execute cycle",
+      "Clock speed and cycles",
+      "Performance basics and metrics"
+    ],
+    "category": "Computer Organization & Architecture",
+    "resources": [
+      "https://www.youtube.com/watch?v=jFDMZpkUWCw",
+      "https://www.geeksforgeeks.org/instruction-cycle/",
+      "https://www.cs.umd.edu/~meesh/cmsc411/website/projects/outer/FDE/fde.html"
+    ]
+  },
+  {
+    "day": 3,
+    "topic": "RAM vs ROM vs Cache & Cache Hierarchy",
+    "subtopics": [
+      "Types: RAM, ROM, Cache",
+      "Cache hierarchy: L1, L2, L3",
+      "When each cache level is used"
+    ],
+    "category": "Memory Systems & Data Representation",
+    "resources": [
+      "https://www.youtube.com/watch?v=yi0FhRqDJfo",
+      "https://www.geeksforgeeks.org/cache-memory-in-computer-organization/",
+      "https://www.cs.cornell.edu/courses/cs3410/2013sp/lecture/08-caches1-g.pdf"
+    ]
+  },
+  {
+    "day": 4,
+    "topic": "Locality of Reference & Virtual Memory",
+    "subtopics": [
+      "Temporal and spatial locality",
+      "Virtual memory concept",
+      "Hardware perspective of virtual memory"
+    ],
+    "category": "Memory Systems & Data Representation",
+    "resources": [
+      "https://www.youtube.com/watch?v=2quKyPnUShQ",
+      "https://www.geeksforgeeks.org/virtual-memory-in-operating-system/",
+      "https://web.cs.wpi.edu/~cs3013/c07/lectures/Section09-Virtual_Memory.pdf"
+    ]
+  },
+  {
+    "day": 5,
+    "topic": "Binary Number System & Number Conversions",
+    "subtopics": [
+      "Binary number system basics",
+      "Binary to decimal conversion",
+      "Decimal to binary conversion"
+    ],
+    "category": "Memory Systems & Data Representation",
+    "resources": [
+      "https://www.youtube.com/watch?v=LpuPe81bc2w",
+      "https://www.geeksforgeeks.org/binary-to-decimal-conversion/",
+      "https://www.rapidtables.com/convert/number/binary-to-decimal.html"
+    ]
+  },
+  {
+    "day": 6,
+    "topic": "Data Encoding & How Media is Stored",
+    "subtopics": [
+      "ASCII and Unicode encoding",
+      "How images are stored digitally",
+      "How audio is stored digitally"
+    ],
+    "category": "Memory Systems & Data Representation",
+    "resources": [
+      "https://www.youtube.com/watch?v=MijmeoH9LT4",
+      "https://www.geeksforgeeks.org/ascii-vs-unicode/",
+      "https://www.bbc.co.uk/bitesize/guides/zstj6sg/revision/1"
+    ]
+  },
+  {
+    "day": 7,
+    "topic": "Floating Point Basics & Compilers vs Interpreters",
+    "subtopics": [
+      "IEEE 754 floating point representation",
+      "Compiler vs interpreter difference",
+      "JIT compilation concept"
+    ],
+    "category": "Program Execution & Runtime",
+    "resources": [
+      "https://www.youtube.com/watch?v=PZRI1IfStY0",
+      "https://www.geeksforgeeks.org/compiler-vs-interpreter-2/",
+      "https://floating-point-gui.de/"
+    ]
+  },
+  {
+    "day": 8,
+    "topic": "What Happens When You Run a Program & Stack vs Heap",
+    "subtopics": [
+      "Program loading and execution steps",
+      "Stack memory \u2013 how it works",
+      "Heap memory \u2013 dynamic allocation"
+    ],
+    "category": "Program Execution & Runtime",
+    "resources": [
+      "https://www.youtube.com/watch?v=_8-ht2AKyH4",
+      "https://www.geeksforgeeks.org/stack-vs-heap-memory-allocation/",
+      "https://medium.com/@nicktacular/what-actually-happens-when-you-run-a-program-7f4e791c6bb"
+    ]
+  },
+  {
+    "day": 9,
+    "topic": "Function Calls & Call Stack + Revision",
+    "subtopics": [
+      "How function calls work",
+      "Call stack mechanics",
+      "Revision: explain all concepts so far"
+    ],
+    "category": "Program Execution & Runtime",
+    "resources": [
+      "https://www.youtube.com/watch?v=Q2sFmqvpBe0",
+      "https://www.geeksforgeeks.org/function-call-stack-in-c/",
+      "https://developer.mozilla.org/en-US/docs/Glossary/Call_stack"
+    ]
+  },
+  {
+    "day": 10,
+    "topic": "What is an Operating System & OS Responsibilities",
+    "subtopics": [
+      "OS definition and purpose",
+      "Core OS responsibilities",
+      "Types of operating systems"
+    ],
+    "category": "Operating Systems",
+    "resources": [
+      "https://www.youtube.com/watch?v=26QPDBe-NB8",
+      "https://www.geeksforgeeks.org/what-is-an-operating-system/",
+      "https://www.tutorialspoint.com/operating_system/os_overview.htm"
+    ]
+  },
+  {
+    "day": 11,
+    "topic": "Process vs Program & Threads vs Processes",
+    "subtopics": [
+      "Process vs program distinction",
+      "Threads vs processes",
+      "Multi-threading basics"
+    ],
+    "category": "Operating Systems",
+    "resources": [
+      "https://www.youtube.com/watch?v=Dhf-DYO1K78",
+      "https://www.geeksforgeeks.org/difference-between-process-and-thread/",
+      "https://www.cs.uic.edu/~jbell/CourseNotes/OperatingSystems/4_Threads.html"
+    ]
+  },
+  {
+    "day": 12,
+    "topic": "Process Lifecycle & Context Switching",
+    "subtopics": [
+      "5 states of a process",
+      "Process Control Block (PCB)",
+      "Context switching mechanism"
+    ],
+    "category": "Operating Systems",
+    "resources": [
+      "https://www.youtube.com/watch?v=4s2MKuVYKV8",
+      "https://www.geeksforgeeks.org/states-of-a-process-in-operating-systems/",
+      "https://www.geeksforgeeks.org/context-switch-in-operating-system/"
+    ]
+  },
+  {
+    "day": 13,
+    "topic": "CPU Scheduling Basics & Preemptive vs Non-Preemptive",
+    "subtopics": [
+      "CPU scheduling algorithms: FCFS, SJF, Round Robin",
+      "Preemptive scheduling",
+      "Non-preemptive scheduling"
+    ],
+    "category": "Operating Systems",
+    "resources": [
+      "https://www.youtube.com/watch?v=EWkQl0n0w5M",
+      "https://www.geeksforgeeks.org/cpu-scheduling-in-operating-systems/",
+      "https://www.tutorialspoint.com/operating_system/os_process_scheduling.htm"
+    ]
+  },
+  {
+    "day": 14,
+    "topic": "Starvation & Fairness & Paging",
+    "subtopics": [
+      "Starvation in scheduling",
+      "Aging as a solution",
+      "Paging in memory management"
+    ],
+    "category": "Operating Systems",
+    "resources": [
+      "https://www.youtube.com/watch?v=2quKyPnUShQ",
+      "https://www.geeksforgeeks.org/paging-in-operating-system/",
+      "https://www.geeksforgeeks.org/starvation-and-aging-in-operating-systems/"
+    ]
+  },
+  {
+    "day": 15,
+    "topic": "Segmentation & Virtual Memory Deep Dive",
+    "subtopics": [
+      "Memory segmentation",
+      "Virtual memory management",
+      "Page tables and TLB"
+    ],
+    "category": "Operating Systems",
+    "resources": [
+      "https://www.youtube.com/watch?v=p9yZNLeOj4s",
+      "https://www.geeksforgeeks.org/segmentation-in-operating-system/",
+      "https://www.cs.cornell.edu/courses/cs4410/2016su/slides/lecture12.pdf"
+    ]
+  },
+  {
+    "day": 16,
+    "topic": "Page Faults & Fragmentation",
+    "subtopics": [
+      "Page fault handling",
+      "Internal vs external fragmentation",
+      "Fragmentation solutions"
+    ],
+    "category": "Operating Systems",
+    "resources": [
+      "https://www.youtube.com/watch?v=uyrSn3qbZ8U",
+      "https://www.geeksforgeeks.org/page-fault-handling-in-operating-system/",
+      "https://www.geeksforgeeks.org/fragmentation-in-operating-system/"
+    ]
+  },
+  {
+    "day": 17,
+    "topic": "Race Conditions, Mutex & Semaphore",
+    "subtopics": [
+      "Race conditions explained",
+      "Mutex and mutual exclusion",
+      "Semaphores and their types"
+    ],
+    "category": "Operating Systems",
+    "resources": [
+      "https://www.youtube.com/watch?v=oZg49rkBTKc",
+      "https://www.geeksforgeeks.org/mutex-vs-semaphore/",
+      "https://www.cs.cornell.edu/courses/cs4410/2018su/lectures/lec07-synchronization.pdf"
+    ]
+  },
+  {
+    "day": 18,
+    "topic": "Deadlock Conditions & Prevention",
+    "subtopics": [
+      "4 conditions for deadlock",
+      "Deadlock prevention strategies",
+      "Banker's algorithm"
+    ],
+    "category": "Operating Systems",
+    "resources": [
+      "https://www.youtube.com/watch?v=ONVju7isEvE",
+      "https://www.geeksforgeeks.org/introduction-of-deadlock-in-operating-system/",
+      "https://www.tutorialspoint.com/deadlock_prevention_with_examples.htm"
+    ]
+  },
+  {
+    "day": 19,
+    "topic": "File Systems & System Calls",
+    "subtopics": [
+      "File system structure",
+      "Common system calls",
+      "File operations at OS level"
+    ],
+    "category": "Operating Systems",
+    "resources": [
+      "https://www.youtube.com/watch?v=KN8YgJnShPM",
+      "https://www.geeksforgeeks.org/file-systems-in-operating-system/",
+      "https://www.geeksforgeeks.org/system-call-in-os/"
+    ]
+  },
+  {
+    "day": 20,
+    "topic": "I/O Management & OS Revision",
+    "subtopics": [
+      "I/O management techniques",
+      "Interrupt-driven I/O",
+      "OS full revision checklist"
+    ],
+    "category": "Operating Systems",
+    "resources": [
+      "https://www.youtube.com/watch?v=F18RiREDkwE",
+      "https://www.geeksforgeeks.org/io-management/",
+      "https://www.os-book.com/OS10/slide-dir/"
+    ]
+  },
+  {
+    "day": 21,
+    "topic": "Practical OS Understanding & Full Recap",
+    "subtopics": [
+      "Using Task Manager / top command",
+      "Identifying processes and threads",
+      "OS concepts full recap"
+    ],
+    "category": "Operating Systems",
+    "resources": [
+      "https://www.youtube.com/watch?v=9GDX-IyZ_C8",
+      "https://www.geeksforgeeks.org/process-management-in-os/",
+      "https://linux.die.net/man/1/top"
+    ]
+  },
+  {
+    "day": 22,
+    "topic": "What is a Network & LAN vs WAN",
+    "subtopics": [
+      "Network definition and types",
+      "LAN vs WAN vs MAN",
+      "Network topologies"
+    ],
+    "category": "Computer Networks",
+    "resources": [
+      "https://www.youtube.com/watch?v=3uhA8bdz8gI",
+      "https://www.geeksforgeeks.org/types-of-area-networks-lan-man-and-wan/",
+      "https://www.cisco.com/c/en/us/solutions/small-business/resource-center/networking/networking-basics.html"
+    ]
+  },
+  {
+    "day": 23,
+    "topic": "Internet Architecture & IP Addressing",
+    "subtopics": [
+      "How the internet works",
+      "IPv4 addressing basics",
+      "Subnetting introduction"
+    ],
+    "category": "Computer Networks",
+    "resources": [
+      "https://www.youtube.com/watch?v=x3c1ih2NJEg",
+      "https://www.geeksforgeeks.org/introduction-of-classful-ip-addressing/",
+      "https://www.cloudflare.com/learning/network-layer/internet-protocol/"
+    ]
+  },
+  {
+    "day": 24,
+    "topic": "DNS Working & HTTP Methods + Status Codes",
+    "subtopics": [
+      "DNS resolution process",
+      "HTTP methods: GET, POST, PUT, DELETE",
+      "HTTP status codes explained"
+    ],
+    "category": "Computer Networks",
+    "resources": [
+      "https://www.youtube.com/watch?v=27r4Bzuj5NQ",
+      "https://www.geeksforgeeks.org/http-headers/",
+      "https://developer.mozilla.org/en-US/docs/Web/HTTP/Status"
+    ]
+  },
+  {
+    "day": 25,
+    "topic": "HTTPS + TLS Handshake & TCP vs UDP",
+    "subtopics": [
+      "HTTPS and SSL/TLS",
+      "TLS handshake steps",
+      "TCP vs UDP comparison"
+    ],
+    "category": "Computer Networks",
+    "resources": [
+      "https://www.youtube.com/watch?v=0TLDTodL7Lc",
+      "https://www.geeksforgeeks.org/tcp-vs-udp/",
+      "https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/"
+    ]
+  },
+  {
+    "day": 26,
+    "topic": "Ports & Sockets & REST APIs",
+    "subtopics": [
+      "Ports and well-known port numbers",
+      "Sockets and socket programming basics",
+      "REST API design principles"
+    ],
+    "category": "Computer Networks",
+    "resources": [
+      "https://www.youtube.com/watch?v=UqyT8IEBkvY",
+      "https://www.geeksforgeeks.org/socket-programming-python/",
+      "https://restfulapi.net/"
+    ]
+  },
+  {
+    "day": 27,
+    "topic": "OSI Model & TCP 3-Way Handshake",
+    "subtopics": [
+      "7 layers of OSI model",
+      "TCP connection establishment",
+      "Three-way handshake: SYN, SYN-ACK, ACK"
+    ],
+    "category": "Computer Networks",
+    "resources": [
+      "https://www.youtube.com/watch?v=vv4y_uOneC0",
+      "https://www.geeksforgeeks.org/layers-of-osi-model/",
+      "https://www.geeksforgeeks.org/tcp-3-way-handshake-process/"
+    ]
+  },
+  {
+    "day": 28,
+    "topic": "Congestion Control & Cookies vs Sessions",
+    "subtopics": [
+      "TCP congestion control basics",
+      "Cookies: how they work",
+      "Sessions vs cookies differences"
+    ],
+    "category": "Computer Networks",
+    "resources": [
+      "https://www.youtube.com/watch?v=cF3MKnFxGYU",
+      "https://www.geeksforgeeks.org/difference-between-session-and-cookies/",
+      "https://www.geeksforgeeks.org/congestion-control-in-computer-networks/"
+    ]
+  },
+  {
+    "day": 29,
+    "topic": "Caching (Browser + Server) & CDN",
+    "subtopics": [
+      "Browser caching mechanisms",
+      "Server-side caching",
+      "CDN and how it works"
+    ],
+    "category": "Computer Networks",
+    "resources": [
+      "https://www.youtube.com/watch?v=RI9np1LWzqw",
+      "https://www.cloudflare.com/learning/cdn/what-is-a-cdn/",
+      "https://www.geeksforgeeks.org/caching-in-system-design/"
+    ]
+  },
+  {
+    "day": 30,
+    "topic": "Load Balancing & WebSockets",
+    "subtopics": [
+      "Load balancing algorithms",
+      "WebSocket protocol",
+      "When to use WebSockets vs HTTP"
+    ],
+    "category": "Computer Networks",
+    "resources": [
+      "https://www.youtube.com/watch?v=K0Ta65OqQkY",
+      "https://www.geeksforgeeks.org/load-balancing-algorithms/",
+      "https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API"
+    ]
+  },
+  {
+    "day": 31,
+    "topic": "API Gateway & Microservices Communication",
+    "subtopics": [
+      "API gateway role",
+      "Microservices communication patterns",
+      "Service mesh basics"
+    ],
+    "category": "Computer Networks",
+    "resources": [
+      "https://www.youtube.com/watch?v=6ULyxuHKxg8",
+      "https://www.geeksforgeeks.org/api-gateway-in-system-design/",
+      "https://microservices.io/patterns/apigateway.html"
+    ]
+  },
+  {
+    "day": 32,
+    "topic": "Network Revision & Real-world Request Flow",
+    "subtopics": [
+      "Full request lifecycle: browser to server",
+      "DNS \u2192 TCP \u2192 HTTP \u2192 Response",
+      "Network debugging tools"
+    ],
+    "category": "Computer Networks",
+    "resources": [
+      "https://www.youtube.com/watch?v=AlkDbnbv7dk",
+      "https://www.geeksforgeeks.org/what-happens-when-you-type-a-url-in-the-browser/",
+      "https://developer.chrome.com/docs/devtools/network/"
+    ]
+  },
+  {
+    "day": 33,
+    "topic": "Debugging Network Issues & Performance Optimization",
+    "subtopics": [
+      "Common network debugging techniques",
+      "Using curl, ping, traceroute",
+      "Performance optimization basics"
+    ],
+    "category": "Computer Networks",
+    "resources": [
+      "https://www.youtube.com/watch?v=wnGEBBvGx3M",
+      "https://www.geeksforgeeks.org/network-troubleshooting-commands/",
+      "https://developers.google.com/web/fundamentals/performance"
+    ]
+  },
+  {
+    "day": 34,
+    "topic": "Network Full Recap & Practice Explanation",
+    "subtopics": [
+      "Recap all network topics",
+      "Self-explain key concepts",
+      "Mock explanation of real-world scenarios"
+    ],
+    "category": "Computer Networks",
+    "resources": [
+      "https://www.youtube.com/watch?v=qiQR5rTSshw",
+      "https://www.geeksforgeeks.org/computer-network-tutorials/",
+      "https://roadmap.sh/computer-science"
+    ]
+  },
+  {
+    "day": 35,
+    "topic": "What is DB + DBMS & SQL vs NoSQL",
+    "subtopics": [
+      "Database and DBMS concepts",
+      "SQL databases overview",
+      "NoSQL databases overview"
+    ],
+    "category": "Databases",
+    "resources": [
+      "https://www.youtube.com/watch?v=FR4QIeZaPeM",
+      "https://www.geeksforgeeks.org/difference-between-sql-and-nosql/",
+      "https://www.mongodb.com/nosql-explained/nosql-vs-sql"
+    ]
+  },
+  {
+    "day": 36,
+    "topic": "Schema Design Basics, Keys & Relationships",
+    "subtopics": [
+      "Entity-Relationship (ER) diagrams",
+      "Primary, foreign, candidate keys",
+      "Database relationships: 1:1, 1:N, N:M"
+    ],
+    "category": "Databases",
+    "resources": [
+      "https://www.youtube.com/watch?v=ztHopE5Wnpc",
+      "https://www.geeksforgeeks.org/types-of-keys-in-relational-model/",
+      "https://www.lucidchart.com/pages/er-diagrams"
+    ]
+  },
+  {
+    "day": 37,
+    "topic": "SQL Queries (SELECT, JOIN) & Indexing",
+    "subtopics": [
+      "SELECT, WHERE, GROUP BY, ORDER BY",
+      "INNER, LEFT, RIGHT, FULL JOINs",
+      "Indexing and B-tree concept"
+    ],
+    "category": "Databases",
+    "resources": [
+      "https://www.youtube.com/watch?v=7S_tz1z_5bA",
+      "https://www.geeksforgeeks.org/sql-join-set-1-inner-left-right-and-full-joins/",
+      "https://use-the-index-luke.com/"
+    ]
+  },
+  {
+    "day": 38,
+    "topic": "Query Optimization & ACID Properties",
+    "subtopics": [
+      "Query execution plan",
+      "Atomicity, Consistency, Isolation, Durability",
+      "Why ACID matters"
+    ],
+    "category": "Databases",
+    "resources": [
+      "https://www.youtube.com/watch?v=pomxJOFVcQs",
+      "https://www.geeksforgeeks.org/acid-properties-in-dbms/",
+      "https://www.ibm.com/cloud/learn/acid-transactions"
+    ]
+  },
+  {
+    "day": 39,
+    "topic": "Isolation Levels & Locks",
+    "subtopics": [
+      "4 isolation levels",
+      "Read uncommitted to serializable",
+      "Locking mechanisms in databases"
+    ],
+    "category": "Databases",
+    "resources": [
+      "https://www.youtube.com/watch?v=4EajrPgJAk0",
+      "https://www.geeksforgeeks.org/transaction-isolation-levels-dbms/",
+      "https://www.postgresql.org/docs/current/transaction-iso.html"
+    ]
+  },
+  {
+    "day": 40,
+    "topic": "Replication & Sharding",
+    "subtopics": [
+      "Database replication types",
+      "Horizontal sharding strategies",
+      "Replication vs sharding trade-offs"
+    ],
+    "category": "Databases",
+    "resources": [
+      "https://www.youtube.com/watch?v=iHWT85PNQK",
+      "https://www.geeksforgeeks.org/database-sharding/",
+      "https://www.geeksforgeeks.org/replication-in-dbms/"
+    ]
+  },
+  {
+    "day": 41,
+    "topic": "CAP Theorem & NoSQL Use Cases",
+    "subtopics": [
+      "CAP theorem explained",
+      "Consistency vs Availability trade-off",
+      "When to choose NoSQL"
+    ],
+    "category": "Databases",
+    "resources": [
+      "https://www.youtube.com/watch?v=BHqjEjzAicA",
+      "https://www.geeksforgeeks.org/cap-theorem/",
+      "https://www.ibm.com/cloud/learn/cap-theorem"
+    ]
+  },
+  {
+    "day": 42,
+    "topic": "Designing DB for an App & High Traffic Handling",
+    "subtopics": [
+      "Practical DB design steps",
+      "Handling high read/write traffic",
+      "DB optimization patterns"
+    ],
+    "category": "Databases",
+    "resources": [
+      "https://www.youtube.com/watch?v=vFjXKOXdgGo",
+      "https://www.geeksforgeeks.org/database-design/",
+      "https://www.cockroachlabs.com/blog/high-traffic-database/"
+    ]
+  },
+  {
+    "day": 43,
+    "topic": "DB Caching & Full System Design Flow",
+    "subtopics": [
+      "Redis for DB caching",
+      "Frontend \u2192 Backend \u2192 DB flow",
+      "System design fundamentals"
+    ],
+    "category": "System Integration & Real-world Debugging",
+    "resources": [
+      "https://www.youtube.com/watch?v=a4yX7RUgTxI",
+      "https://www.geeksforgeeks.org/caching-in-system-design/",
+      "https://redis.io/docs/getting-started/"
+    ]
+  },
+  {
+    "day": 44,
+    "topic": "Identifying Bottlenecks & Debugging System Issues",
+    "subtopics": [
+      "Performance bottleneck identification",
+      "Common system bugs and fixes",
+      "Profiling tools overview"
+    ],
+    "category": "System Integration & Real-world Debugging",
+    "resources": [
+      "https://www.youtube.com/watch?v=qyc9QNqfQCw",
+      "https://www.geeksforgeeks.org/system-design-horizontal-and-vertical-scaling/",
+      "https://www.datadoghq.com/knowledge-center/database-performance/"
+    ]
+  },
+  {
+    "day": 45,
+    "topic": "Mock Interview (Self Explanation) & Final Revision",
+    "subtopics": [
+      "Self-explain all 45 concepts",
+      "Connect all topics together",
+      "Mock interview practice questions"
+    ],
+    "category": "System Integration & Real-world Debugging",
+    "resources": [
+      "https://www.youtube.com/watch?v=REB_eGHK_P4",
+      "https://www.interviewbit.com/technical-interview-questions/",
+      "https://roadmap.sh/computer-science"
+    ]
+  }
+]

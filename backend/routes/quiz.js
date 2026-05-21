@@ -2,7 +2,9 @@ const express = require('express');
 const router = express.Router();
 const auth = require('../middleware/auth');
 const axios = require('axios');
+const User = require('../models/User');
 
+// Generate quiz
 router.post('/generate', auth, async (req, res) => {
   const { topic, subtopics, day } = req.body;
   if (!topic) return res.status(400).json({ message: 'Topic is required' });
@@ -58,6 +60,37 @@ Where "correct" is the 0-based index of the correct option. Return ONLY the JSON
     const errMsg = err.response?.data?.error?.message || err.message;
     console.error('Groq API error:', errMsg);
     res.status(500).json({ message: 'Quiz generation failed: ' + errMsg });
+  }
+});
+
+// Submit quiz score
+router.post('/submit', auth, async (req, res) => {
+  try {
+    const { day, score } = req.body;
+    if (day === undefined || score === undefined) {
+      return res.status(400).json({ message: 'Day and score are required' });
+    }
+
+    const dayStr = day.toString();
+    const user = req.user;
+    
+    // Initialize map if it doesn't exist
+    if (!user.quizScores) {
+      user.quizScores = new Map();
+    }
+
+    const existingScore = user.quizScores.get(dayStr) || 0;
+    if (score > existingScore) {
+      user.quizScores.set(dayStr, score);
+      await user.save();
+    }
+
+    res.json({
+      message: 'Score submitted successfully',
+      quizScores: Object.fromEntries(user.quizScores)
+    });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
   }
 });
 
