@@ -33,7 +33,7 @@ export default function AuthPage() {
       <div className="auth-card">
         <div className="auth-logo">
           <span className="logo-icon">⚡</span>
-          <h1>CS Fundamentals</h1>
+          <h1>Goal2Hire</h1>
           <p>Master Computer Science in 90 Days</p>
         </div>
 
@@ -76,12 +76,6 @@ export default function AuthPage() {
             {mode === 'login' ? 'Register' : 'Login'}
           </span>
         </p>
-
-        <div className="auth-stats">
-          <div><strong>90</strong><span>Days</span></div>
-          <div><strong>45</strong><span>Topics</span></div>
-          <div><strong>7</strong><span>Domains</span></div>
-        </div>
       </div>
     </div>
   );

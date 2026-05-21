@@ -12,7 +12,15 @@ const categoryColors = {
   'System Integration & Real-world Debugging': '#f97316'
 };
 
-export default function DayDetailModal({ day, onClose, completedDays, onToggle }) {
+export default function DayDetailModal({
+  day,
+  onClose,
+  completedDays,
+  failedDays = [],
+  quizScores = {},
+  onToggle,
+  onScoreSubmit
+}) {
   const [tab, setTab] = useState('resources');
   const [quiz, setQuiz] = useState(null);           // all 10 questions
   const [quizLoading, setQuizLoading] = useState(false);
@@ -24,6 +32,16 @@ export default function DayDetailModal({ day, onClose, completedDays, onToggle }
 
   const isCompleted = completedDays.includes(day.day);
   const catColor = categoryColors[day.category] || '#6366f1';
+
+  const todayScore = quizScores?.[day.day.toString()];
+  const yesterdayNum = day.day - 1;
+  const yesterdayFailed = failedDays?.includes(yesterdayNum);
+  const yesterdayScore = yesterdayFailed ? quizScores?.[yesterdayNum.toString()] : null;
+
+  const canMarkComplete = isCompleted || (
+    (todayScore !== undefined && todayScore >= 8) &&
+    (!yesterdayFailed || (yesterdayScore !== undefined && yesterdayScore >= 8))
+  );
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -63,9 +81,17 @@ export default function DayDetailModal({ day, onClose, completedDays, onToggle }
     }
   };
 
-  const handleNext = () => {
+  const handleNext = async () => {
     if (current + 1 >= quiz.length) {
       setFinished(true);
+      try {
+        await API.post('/quiz/submit', { day: day.day, score });
+        if (onScoreSubmit) {
+          onScoreSubmit(day.day, score);
+        }
+      } catch (err) {
+        toast.error(err.response?.data?.message || 'Failed to submit quiz score');
+      }
     } else {
       setCurrent(c => c + 1);
       setSelected(null);
@@ -86,14 +112,54 @@ export default function DayDetailModal({ day, onClose, completedDays, onToggle }
             <span className="modal-category" style={{ color: catColor }}>{day.category}</span>
             <span className="modal-cycle">Cycle {day.cycle}</span>
           </div>
-          <div className="modal-actions">
-            <button
-              className={`btn-complete ${isCompleted ? 'completed' : ''}`}
-              onClick={() => onToggle(day.day)}
-            >
-              {isCompleted ? '✓ Completed' : 'Mark as Done'}
-            </button>
-            <button className="btn-close" onClick={onClose}>✕</button>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', width: '100%' }}>
+            <div className="modal-actions" style={{ marginTop: 0 }}>
+              <button
+                className={`btn-complete ${isCompleted ? 'completed' : ''}`}
+                onClick={() => onToggle(day.day)}
+                disabled={!canMarkComplete}
+                title={
+                  !canMarkComplete
+                    ? yesterdayFailed && (yesterdayScore === undefined || yesterdayScore < 8)
+                      ? `You must pass yesterday's quiz (Day ${yesterdayNum}) with a score >= 8 and today's quiz (Day ${day.day}) with a score >= 8 first.`
+                      : `You must pass today's quiz (Day ${day.day}) with a score >= 8 first.`
+                    : ''
+                }
+              >
+                {isCompleted ? '✓ Completed' : 'Mark as Done'}
+              </button>
+              <button className="btn-close" onClick={onClose}>✕</button>
+            </div>
+            
+            {!canMarkComplete && (
+              <div className="quiz-requirement-alert" style={{
+                fontSize: '0.8rem',
+                color: '#ef4444',
+                background: 'rgba(239, 68, 68, 0.1)',
+                padding: '8px 12px',
+                borderRadius: '6px',
+                border: '1px solid rgba(239, 68, 68, 0.2)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px'
+              }}>
+                ⚠️ <span>
+                  {yesterdayFailed && (yesterdayScore === undefined || yesterdayScore < 8) ? (
+                    <>
+                      <strong>Score Requirement:</strong> You must score <strong>&ge; 8/10</strong> on <strong>both</strong> Day {yesterdayNum} (yesterday's failed task) and Day {day.day} quizzes.
+                      <br />
+                      Current: Day {yesterdayNum}: {yesterdayScore !== undefined ? `${yesterdayScore}/10` : 'Not attempted'}, Day {day.day}: {todayScore !== undefined ? `${todayScore}/10` : 'Not attempted'}
+                    </>
+                  ) : (
+                    <>
+                      <strong>Score Requirement:</strong> You must score <strong>&ge; 8/10</strong> on the Day {day.day} quiz to mark it done.
+                      <br />
+                      Current score: {todayScore !== undefined ? `${todayScore}/10` : 'Not attempted'}
+                    </>
+                  )}
+                </span>
+              </div>
+            )}
           </div>
         </div>
 
@@ -107,7 +173,7 @@ export default function DayDetailModal({ day, onClose, completedDays, onToggle }
           </button>
           <button
             className={`modal-tab ${tab === 'quiz' ? 'active' : ''}`}
-            onClick={() => { if (!quiz && !quizLoading) generateQuiz(); else setTab('quiz'); }}
+            onClick={() => setTab('quiz')}
           >
             🧠 Quiz {quiz && !finished ? `(${current + 1}/${quiz.length})` : ''}
           </button>
@@ -154,6 +220,45 @@ export default function DayDetailModal({ day, onClose, completedDays, onToggle }
           {/* ── QUIZ TAB ── */}
           {tab === 'quiz' && (
             <div className="quiz-panel">
+
+              {/* Quiz overview / previous score status */}
+              {!quiz && !quizLoading && (
+                <div className="quiz-overview" style={{ textAlign: 'center', padding: '24px 0' }}>
+                  <div style={{ fontSize: '3rem', marginBottom: '16px' }}>🧠</div>
+                  {todayScore !== undefined ? (
+                    <div style={{ marginBottom: '24px' }}>
+                      <h3 style={{ fontSize: '1.2rem', marginBottom: '8px', color: 'var(--text)' }}>Previous Best Score</h3>
+                      <div className={`final-score-ring ${todayScore >= 8 ? 'excellent' : todayScore >= 6 ? 'good' : 'try-again'}`} style={{ margin: '0 auto 16px' }}>
+                        <span className="final-score-num">{todayScore}</span>
+                        <span className="final-score-denom">/10</span>
+                      </div>
+                      <p style={{
+                        color: todayScore >= 8 ? 'var(--green)' : '#ef4444',
+                        fontWeight: '600',
+                        fontSize: '0.95rem'
+                      }}>
+                        {todayScore >= 8 ? '✅ Passed! (Score is >= 8)' : '❌ Not Passed (Requires >= 8)'}
+                      </p>
+                      <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', marginTop: '8px' }}>
+                        {todayScore >= 8 
+                          ? 'You can now mark this day as completed.' 
+                          : 'You must retake and score at least 8/10 to mark this day as completed.'}
+                      </p>
+                    </div>
+                  ) : (
+                    <div style={{ marginBottom: '24px' }}>
+                      <h3 style={{ fontSize: '1.2rem', marginBottom: '8px', color: 'var(--text)' }}>Quiz Not Attempted</h3>
+                      <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', maxWidth: '300px', margin: '0 auto' }}>
+                        You must complete the quiz and score at least <strong>8/10</strong> to mark Day {day.day} as completed.
+                      </p>
+                    </div>
+                  )}
+                  
+                  <button className="btn-quiz-gen" onClick={generateQuiz} style={{ maxWidth: '280px', margin: '0 auto' }}>
+                    {todayScore !== undefined ? '🔄 Retake Quiz' : '🚀 Start Quiz'}
+                  </button>
+                </div>
+              )}
 
               {/* Loading state */}
               {quizLoading && (

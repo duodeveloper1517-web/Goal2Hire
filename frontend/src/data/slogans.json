@@ -1,0 +1,33 @@
+{
+  "streak": [
+    "🔥 You are on fire! Keep that streak burning!",
+    "🚀 Unstoppable! Your consistency is your superpower!",
+    "💪 Day by day, you are building the future. Keep it up!",
+    "✨ Look at you go! The streak is proof of your dedication!",
+    "🎯 Consistency beats talent. Keep pushing every single day!",
+    "🌟 A streak of greatness! Keep scaling new heights!"
+  ],
+  "doing_task": [
+    "⚡ Today is a perfect day to learn something new!",
+    "📚 Knowledge is power. Let's tackle today's topic!",
+    "🌟 One day at a time, you're becoming a master. Let's do this!",
+    "🎯 Stay focused, stay curious, and crush today's target!",
+    "💡 Every concept you learn today makes you a better engineer tomorrow!",
+    "🛠️ Let's build your fundamentals. Start today's task now!"
+  ],
+  "failed": [
+    "🌱 Every setback is a setup for a comeback. You've got this!",
+    "🔄 It's okay to fall, but it's not okay to stay down. Let's double up today!",
+    "🔥 Don't stress about yesterday. Today is a fresh opportunity to catch up!",
+    "💡 Progress isn't linear. Let's conquer both tasks and get back on track!",
+    "🎯 Double the effort, double the reward. You can clear this failed day!",
+    "💪 Dust yourself off! You are stronger than your failures. Let's catch up!"
+  ],
+  "completed": [
+    "🎉 All caught up! You are doing amazing!",
+    "🏆 Great job completing your tasks! Take a well-deserved breath!",
+    "🌟 You are ahead of the game. Keep this energy going!",
+    "🙌 High five! Today's mission is fully accomplished!",
+    "🌈 Relax and review! You've successfully conquered today's challenge!"
+  ]
+}

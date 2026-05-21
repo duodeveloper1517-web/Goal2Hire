@@ -1,4 +1,6 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+/* eslint-disable react-refresh/only-export-components */
+/* eslint-disable react-hooks/set-state-in-effect */
+import { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import API from '../api/axios';
 
 const AuthContext = createContext(null);
@@ -7,13 +9,22 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  const fetchCurrentUser = async () => {
+    try {
+      const { data } = await API.get('/auth/me');
+      setUser(data.user);
+    } catch {
+      localStorage.removeItem('token');
+      setUser(null);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
-      API.get('/auth/me')
-        .then(res => setUser(res.data.user))
-        .catch(() => localStorage.removeItem('token'))
-        .finally(() => setLoading(false));
+      fetchCurrentUser();
     } else {
       setLoading(false);
     }
@@ -38,12 +49,16 @@ export function AuthProvider({ children }) {
     setUser(null);
   };
 
-  const updateCompletedDays = (completedDays) => {
-    setUser(prev => ({ ...prev, completedDays }));
-  };
+  const updateUser = useCallback((updatedFields) => {
+    setUser(prev => prev ? { ...prev, ...updatedFields } : updatedFields);
+  }, []);
+
+  const updateCompletedDays = useCallback((completedDays) => {
+    setUser(prev => prev ? { ...prev, completedDays } : null);
+  }, []);
 
   return (
-    <AuthContext.Provider value={{ user, loading, login, register, logout, updateCompletedDays }}>
+    <AuthContext.Provider value={{ user, loading, login, register, logout, updateUser, updateCompletedDays }}>
       {children}
     </AuthContext.Provider>
   );
