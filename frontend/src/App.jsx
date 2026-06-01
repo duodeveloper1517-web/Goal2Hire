@@ -4,18 +4,42 @@ import { Toaster } from 'react-hot-toast';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import AuthPage from './pages/AuthPage';
 import Dashboard from './pages/Dashboard';
+import InterviewPage from './pages/InterviewPage';
 import SubjectSelector from './components/SubjectSelector';
 import SyllabusAgreement from './components/SyllabusAgreement';
 import './index.css';
 
 function AppContent() {
   const { user, loading, updateUser } = useAuth();
-  const [sessionSubject, setSessionSubject] = useState(null);
+  const [sessionSubject, setSessionSubjectState] = useState(() => {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('path') || null;
+  });
+
+  const setSessionSubject = (subject) => {
+    if (subject) {
+      window.history.pushState({ subject }, '', `?path=${encodeURIComponent(subject)}`);
+    } else {
+      window.history.pushState({ subject: null }, '', window.location.pathname);
+    }
+    setSessionSubjectState(subject);
+  };
+
+  useEffect(() => {
+    const handlePopState = (event) => {
+      setSessionSubjectState(event.state?.subject || null);
+    };
+
+    window.history.replaceState({ subject: sessionSubject }, '');
+    window.addEventListener('popstate', handlePopState);
+    
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
 
   // Reset selected session subject if user logs out
   useEffect(() => {
     if (!user) {
-      setSessionSubject(null);
+      setSessionSubjectState(null);
     }
   }, [user]);
 
@@ -31,17 +55,22 @@ function AppContent() {
     return <AuthPage />;
   }
 
-  // Route 1: Subject Selection (shown on login or when returning to path selector)
+  // Route 1: Subject Selection
   if (!sessionSubject) {
     return <SubjectSelector onSelect={(subject) => setSessionSubject(subject)} />;
   }
 
-  // Route 2: Syllabus & Agreement (if user hasn't started/agreed to this path yet)
+  // Route 2: Interview Questions (standalone path)
+  if (sessionSubject === 'Interview Questions') {
+    return <InterviewPage onBack={() => setSessionSubject(null)} />;
+  }
+
+  // Route 3: Syllabus & Agreement (CS Fundamentals only)
   if (sessionSubject === 'CS Fundamentals' && (!user.selectedSubject || !user.agreed)) {
     return <SyllabusAgreement onSubmit={(userData) => updateUser(userData)} />;
   }
 
-  // Route 3: Main dashboard
+  // Route 4: Main dashboard (CS Fundamentals)
   return <Dashboard onBackToSubjects={() => setSessionSubject(null)} />;
 }
 

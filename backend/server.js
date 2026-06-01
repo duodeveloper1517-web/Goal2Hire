@@ -27,6 +27,7 @@ app.use(express.json());
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/schedule', require('./routes/schedule'));
 app.use('/api/quiz', require('./routes/quiz'));
+app.use('/api/interview', require('./routes/interview'));
 
 app.get('/', (req, res) => res.json({ message: 'Goal2Hire API running' }));
 
